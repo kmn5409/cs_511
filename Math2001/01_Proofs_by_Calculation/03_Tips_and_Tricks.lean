@@ -24,7 +24,11 @@ example {a b : ℝ} (h1 : a - 5 * b = 4) (h2 : b + 2 = 3) : a = 9 :=
 
 -- Example 1.3.4
 example {w : ℚ} (h1 : 3 * w + 1 = 4) : w = 1 :=
-  sorry
+  calc
+    w = (( (3 * w) + 1) / 3 ) - (1 / 3) := by ring
+    _ = ( 4 / 3 ) - (1 / 3) := by rw [h1]
+    _ = 1 := by ring
+--  sorry
 
 -- Example 1.3.5
 example {x : ℤ} (h1 : 2 * x + 3 = x) : x = -3 :=
@@ -44,7 +48,12 @@ example {x y : ℝ} (h1 : x + y = 4) (h2 : 5 * x - 3 * y = 4) : x = 2 :=
 
 -- Example 1.3.9
 example {a b : ℚ} (h1 : a - 3 = 2 * b) : a ^ 2 - a + 3 = 4 * b ^ 2 + 10 * b + 9 :=
-  sorry
+  calc
+    (a ^ 2 - a + 3) = (a - 3) ^ 2 + 5 * (a - 3) + 9  := by ring
+    _ = (2 * b) ^ 2 + 5 * (2 * b) + 9 := by rw [h1]
+    _ = 4 * (b ^ 2) + 10 * b + 9 := by ring
+
+  --sorry
 
 -- Example 1.3.10
 example {z : ℝ} (h1 : z ^ 2 - 2 = 0) : z ^ 4 - z ^ 3 - z ^ 2 + 2 * z + 1 = 3 :=
