@@ -56,8 +56,7 @@ theorem exercise_3b {x : ℤ} : x ^ 5 ≡ x [ZMOD 5] := by
 @[autograded 3]
 theorem exercise_4a (n : ℤ) (hn : n ^ 2 ≡ 4 [ZMOD 5]) : n ≡ 2 [ZMOD 5] ∨ n ≡ 3 [ZMOD 5] := by
   mod_cases h : n % 5
-  · -- case 1: `n ≡ 0 [ZMOD 3]`
-    have H :=
+  · have H :=
       calc 0 ≡ 0 [ZMOD 5] := by extra
       _ ≡ 0 ^ 2 [ZMOD 5] := by numbers
       _ ≡ n ^ 2 [ZMOD 5] := by rel [h]
@@ -69,11 +68,9 @@ theorem exercise_4a (n : ℤ) (hn : n ^ 2 ≡ 4 [ZMOD 5]) : n ≡ 2 [ZMOD 5] ∨
       _ ≡ n ^ 2 [ZMOD 5] := by rel [h]
       _ ≡ 4 [ZMOD 5] := hn
     numbers at H
-  · -- case 1: `n ≡ 2 [ZMOD 3]`
-    left
+  · left
     apply h
-  · -- case 1: `n ≡ 3 [ZMOD 3]`
-    right
+  · right
     apply h
   · have H :=
       calc 1 ≡ 1 + 5 * 3 [ZMOD 5] := by extra
