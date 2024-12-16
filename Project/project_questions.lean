@@ -244,3 +244,27 @@ example (P : Prop) : (P ∨ P) ↔ P := by
   · intro hP
     left
     exact hP
+
+--Question 17 Sets
+--Lean-Github
+example (t : ℝ) : t ∈ {x : ℝ | -1 < x} ∪ {x : ℝ | x < 1} := by
+  by_cases h1 : -1 < t
+  · left
+    · exact h1
+  · by_cases h2 : t < 1
+    · right
+      · exact h2
+    · exfalso
+      · push_neg at h1
+        linarith
+
+
+--Question 18 Proofs with Structure
+--Lean-Github
+example {m n : ℤ} (h1 : m + 3 ≤ 2 * n - 1) (h2 : n ≤ 5) : m ≤ 6 := by
+  linarith only [h1, h2]
+
+--Question 19 Proofs_with_Structure_II
+--Lean-Github
+example {n : ℕ} (hn : ∀ m, n ∣ m) : n = 1 := by
+  exact Nat.eq_one_of_dvd_one (hn 1)
